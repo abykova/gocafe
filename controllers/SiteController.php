@@ -63,7 +63,10 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
-
+    public function actionM_cabinet()
+    {
+        return $this->render('m_cabinet');
+    }
     /**
      * Login action.
      *
