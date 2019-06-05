@@ -1,5 +1,6 @@
 <?php
 use yii\bootstrap\Modal;
+use yii\helpers\Html;
 
 ?>
 
@@ -7,15 +8,15 @@ use yii\bootstrap\Modal;
 <div id="colorlib-page">
     <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
     <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-        <h1 id="colorlib-logo"><a href="index.html"><span class="flaticon-camera"></span>Go Cafe</a></h1>
+        <h1 id="colorlib-logo"><?= Html::a('<span class="flaticon-camera"></span>Go Cafe',['site/index']) ?>
         <nav id="colorlib-main-menu" role="navigation">
             <ul>
-                <li class="colorlib-active"><a href="index.html">Home</a></li>
-                <li><a href="about.php">About</a></li>
-                <li><a href="contact.php">Contact</a></li>
-                <li><input placeholder="заведение">filter</input></li>
-                <li><input placeholder="время работы">filter</input></li>
-                <li><input placeholder="кухня">filter</input></li>
+                <li class="colorlib-active"><?= Html::a('Home',['site/index']) ?></li>
+                <li><?= Html::a('About',['site/about']) ?></li>
+                <li><?= Html::a('Contact',['site/contact']) ?></li>
+                <li><input placeholder="заведение" type='text'></li>
+                <li><input placeholder="время работы"></li>
+                <li><input placeholder="кухня"></li>
             </ul>
             <ul class="tagcloud">
                 <a href="#" class="tag-cloud-link">кухня</a>
@@ -216,22 +217,5 @@ use yii\bootstrap\Modal;
     </svg>
 </div>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-migrate-3.0.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/aos.js"></script>
-<script src="js/jquery.animateNumber.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="js/jquery.timepicker.min.js"></script>
-<script src="js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="js/google-map.js"></script>
-<script src="js/main.js"></script>
 
 </body>
