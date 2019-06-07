@@ -1,5 +1,7 @@
  <?php 
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
+use yii\widgets\ActiveForm;
   ?>
   <body>
 
@@ -35,6 +37,10 @@ use yii\helpers\Html;
 	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p>
 	            <h1 class="mb-3 bread">About Us</h1>
 	            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+				
+
+                    
+
 	          </div>
 	        </div>
 				</div>
@@ -48,6 +54,7 @@ use yii\helpers\Html;
 						</div>
 						<div class="author-info text p-4 mt-5 mb-5 ftco-animate">
 							<div class="desc">
+
 								<h1 class="mb-4">Почему онлайн-бронирование выгодно для вас?</h1>
 								<p class="mb-4">Вы получаете гостей из числа посетителей нашего сайта.</p>
 								<ul class="mb-4">

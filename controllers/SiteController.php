@@ -9,6 +9,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\ApplicationForm;
+use app\models\Application;
 
 class SiteController extends Controller
 {
@@ -60,12 +62,37 @@ class SiteController extends Controller
      * @return string
      */
     public function actionIndex()
-    {
-        return $this->render('index');
+    {   
+        if(Yii::$app->request->isAjax){
+            debug(Yii::$app->request->post());
+            return 'index';
+        }
+        $model = new ApplicationForm();
+        $model->save();
+        if ($model->load(Yii::$app->request->post())){
+            if( $model->save()){
+                Yii::$app->session->setFlash('success','Данные приняты');
+                return $this->refresh();
+            }
+            else{
+                Yii::$app->session->setFlash('error','Ошибка');
+            }
+        }
+        return $this->render('index',compact('model'));
+
     }
     public function actionM_cabinet()
-    {
-        return $this->render('m_cabinet');
+    {   
+        
+
+        $id=Yii::$app->request->get('id');
+
+        $cats= Application::find()->where(['id' => '4'])->orderBy('id')->asArray()->all();
+        //$cats->delete();
+        //$cats= Application::find()->all();
+        
+        
+        return $this->render('m_cabinet',compact('cats'));
     }
     /**
      * Login action.

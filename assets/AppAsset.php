@@ -21,7 +21,8 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/open-iconic-bootstrap.min.css',
-        'css/bootstrap/bootstrap-grid.css',
+        'css/bootstrap-grid.min.css',
+        'css/bootstrap-reboot.min.css',
         'css/animate.css',
         'css/owl.carousel.min.css',
         'css/owl.theme.default.min.css',
@@ -55,6 +56,6 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapPluginAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }

@@ -1,7 +1,7 @@
 <?php
 use yii\bootstrap\Modal;
+use yii\widgets\ActiveForm;
 use yii\helpers\Html;
-
 ?>
 
 <body>
@@ -24,9 +24,9 @@ use yii\helpers\Html;
                 <a href="#" class="tag-cloud-link">праздник</a>
                 <a href="#" class="tag-cloud-link">акции</a>
                 <a href="#" class="tag-cloud-link">суши</a>
-                <a href="#" class="tag-cloud-link">хуюши</a>
                 <a href="#" class="tag-cloud-link">leaves</a>
                 <a href="#" class="tag-cloud-link">food</a>
+                
             </ul>
         </nav>
 
@@ -48,28 +48,41 @@ use yii\helpers\Html;
     </aside>
     <div id="colorlib-main">
         <section class="ftco-section-2">
+            <?php $form = ActiveForm::begin(['options'=>['id'=>'applicationForm']]); ?>
+
+                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+                        
+                        <?= $form->field($model, 'tell') ?>
+                        
+                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+                        
+                        <div class="form-group">
+                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                        </div>
+
+                <?php ActiveForm::end(); ?>
             <div class="photograhy">
                 <div class="row no-gutters">
 
-
+                        
 
                     <div class="col-md-4 ftco-animate">
-
-						<?php
-
-						Modal::begin([
-							'header' => '<h2>Hello world</h2>',
-							'toggleButton' => ['label' => 'click me'],
-// 'footer' => 'Низ окна',
-						]);
-
-						echo 'Say hello...';
-
-						Modal::end();
-						?>
+                        
+						<?php 
+                            Modal::begin([
+                                'header' => '<h2>Hello world</h2>',
+                                'toggleButton' => ['label' => 'click me'],
+                                'footer' => 'Низ окна',
+                            ]);
+                             
+                            echo 'Say hello...';
+                             
+                            Modal::end();
+                         ?>
+                        
 
                         <a href="images/image_1.jpg"
-                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           class="photography-entry imп image-popup d-flex justify-content-center align-items-center"
                            style="background-image: url(images/image_1.jpg);">
                             <div class="overlay"></div>
                             <div class="text text-center">
