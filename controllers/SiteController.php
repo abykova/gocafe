@@ -2,14 +2,15 @@
 
 namespace app\controllers;
 
-use app\models\ContactForm;
-use app\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
-
+use yii\filters\VerbFilter;
+use app\models\LoginForm;
+use app\models\ContactForm;
+use app\models\ApplicationForm;
+use app\models\Application;
 class SiteController extends Controller
 {
     /**
@@ -60,12 +61,29 @@ class SiteController extends Controller
      * @return string
      */
     public function actionIndex()
-    {
-        return $this->render('index');
+    {   
+        if(Yii::$app->request->isAjax){
+            debug(Yii::$app->request->post());
+            return 'index';
+        }
+        $model = new ApplicationForm();
+        $model->save();
+        if ($model->load(Yii::$app->request->post())){
+            if( $model->save()){
+                Yii::$app->session->setFlash('success','Данные приняты');
+                return $this->refresh();
+            }
+            else{
+                Yii::$app->session->setFlash('error','Ошибка');
+            }
+        }
+        return $this->render('index',compact('model'));
+
     }
     public function actionM_cabinet()
-    {
-        return $this->render('m_cabinet');
+    {   
+        $cats= Application::find()->all();
+        return $this->render('m_cabinet',compact('cats'));
     }
     /**
      * Login action.

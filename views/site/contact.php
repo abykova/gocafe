@@ -1,6 +1,7 @@
 <?php 
-
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
+
  ?>
 <body>
 
@@ -29,6 +30,7 @@ use yii\helpers\Html;
 			</div>
 		</aside> <!-- END COLORLIB-ASIDE -->
 		<div id="colorlib-main">
+			
 			<section class="ftco-section bg-light ftco-bread">
 				<div class="container">
 					<div class="row no-gutters slider-text align-items-center">
@@ -89,6 +91,7 @@ use yii\helpers\Html;
 	            </form>
 	          
 	          </div>
+	          
 
 	          <div class="col-md-6 d-flex">
 	          	<div id="map" class="bg-light"></div>
