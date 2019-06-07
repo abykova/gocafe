@@ -1,4 +1,5 @@
 <?php
+
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
 
@@ -50,9 +51,6 @@ use yii\helpers\Html;
         <section class="ftco-section-2">
             <div class="photograhy">
                 <div class="row no-gutters">
-
-
-
                     <div class="col-md-4 ftco-animate">
 
 						<?php
