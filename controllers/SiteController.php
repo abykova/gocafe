@@ -11,7 +11,6 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\ApplicationForm;
 use app\models\Application;
-
 class SiteController extends Controller
 {
     /**
@@ -83,15 +82,7 @@ class SiteController extends Controller
     }
     public function actionM_cabinet()
     {   
-        
-
-        $id=Yii::$app->request->get('id');
-
-        $cats= Application::find()->where(['id' => '4'])->orderBy('id')->asArray()->all();
-        //$cats->delete();
-        //$cats= Application::find()->all();
-        
-        
+        $cats= Application::find()->all();
         return $this->render('m_cabinet',compact('cats'));
     }
     /**

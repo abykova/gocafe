@@ -1,4 +1,5 @@
 <?php
+
 use yii\bootstrap\Modal;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
@@ -63,14 +64,11 @@ use yii\helpers\Html;
                 <?php ActiveForm::end(); ?>
             <div class="photograhy">
                 <div class="row no-gutters">
-
-                        
-
                     <div class="col-md-4 ftco-animate">
                         
 						<?php 
                             Modal::begin([
-                                'header' => '<h2>Hello world</h2>',
+                                'header' => '<h2>Отправь заявку на бронь</h2>',
                                 'toggleButton' => ['label' => 'click me'],
                                 'footer' => 'Низ окна',
                             ]);

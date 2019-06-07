@@ -47,17 +47,13 @@ use yii\helpers\Html;
 	    			<div class="col-lg-8 ftco-animate">
 	            <div class="mb-8 font-weight-bold ">
 	            	 
-					<p><?php 
 					
-					 
-					?></p>
 	            	<table class="table">
 	            		<thead>
 		            		<tr>
 		            			<th class=" ">Имя</th>
 		            			<th class=" ">Телефон</th>
 		            			<th class=" ">Текст</th>
-		            			<th class=" ">Управление</th>
 		            			
 		            		</tr>
 	            		</thead>
@@ -67,12 +63,6 @@ use yii\helpers\Html;
 	            			<td><?php echo $cat->name ?></td>
 	            			<td><?php echo $cat->tell ?></td>
 	            			<td><?php echo $cat->text ?></td>
-	            			<td>
-
-	            				<a  class='btn btn-warning' href="#?id=<?php  echo $cat->id ?>">У</a>
-	            				<a  class='btn btn-primary' href="#?id=<?php echo $cat->id ?>">Х</a>
-
-	            			</td>
 	            		</tr>
 	            		<?php endforeach;  ?>
 	            		</tbody>
