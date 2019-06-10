@@ -48,25 +48,7 @@ use yii\helpers\Html;
 	            <div class="mb-8 font-weight-bold ">
 	            	 
 					
-	            	<table class="table">
-	            		<thead>
-		            		<tr>
-		            			<th class=" ">Имя</th>
-		            			<th class=" ">Телефон</th>
-		            			<th class=" ">Текст</th>
-		            			
-		            		</tr>
-	            		</thead>
-	            		<tbody>
-	            			<?php foreach ($cats as $cat ):?>
-	            		<tr>
-	            			<td><?php echo $cat->name ?></td>
-	            			<td><?php echo $cat->tell ?></td>
-	            			<td><?php echo $cat->text ?></td>
-	            		</tr>
-	            		<?php endforeach;  ?>
-	            		</tbody>
-	            	</table>
+	            	
 	            	
 	            </div>
 	            
@@ -85,7 +67,7 @@ use yii\helpers\Html;
 	            	<h3 class="sidebar-heading">Возможности</h3>
 	              <ul class="categories">
 	                <li><a href="#">Создать карту заведения </a></li>
-	                <li><?= Html::a('Бронь',['site/reservation']) ?></li>
+	                <li><a href="#">Бронь </a></li>
 	                <li><a href="#">Редактировать контакты </a></li>
 	                <li><a href="#">Редактировать время работы </a></li>
 	                <li><a href="#">Редактировать меню </a></li>
