@@ -49,217 +49,164 @@ use yii\helpers\Html;
     <div id="colorlib-main">
         <section class="ftco-section-2">
 
-            
+
+			<?php
+                Modal::begin([
+                    'toggleButton' => [
+                        'style' => 'background-image: url(images/image_1.jpg)',
+                        'class' => 'photography-entry imп image-popup d-flex justify-content-center align-items-center',
+                    ],
+                ]);
+			?>
+
+                <?php $form = ActiveForm::begin(['options' => ['id' => 'applicationForm']]); ?>
+
+                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+                    <?= $form->field($model, 'tell') ?>
+                    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+
+                    <div class="form-group">
+                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                    </div>
+
+                <?php ActiveForm::end(); ?>
+
+			<?php Modal::end(); ?>
 
             <div class="photograhy">
                 <div class="row no-gutters">
-                    <?php
-                Modal::begin([
-                    'toggleButton' => [
-                        'label'=>'',
-                        'style' => 'background-image: url(images/image_1.jpg)',
-                        'class' => 'modalclass photography-entry img col-md-4  d-flex justify-content-center align-items-center',
-                        ],
-                    ]);
-                ?>
-
-                    <?php $form = ActiveForm::begin(['options' => ['id' => 'applicationForm']]); ?>
-
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'tell') ?>
-                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-                        <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                        </div>
-
-                    <?php ActiveForm::end(); ?>
-
-            <?php Modal::end(); ?>
-            <?php
-                Modal::begin([
-                    'toggleButton' => [
-                        'label'=>'',
-                        'style' => 'background-image: url(images/image_2.jpg)',
-                        'class' => 'modalclass photography-entry img col-md-4  d-flex justify-content-center align-items-center',
-                        ],
-                    ]);
-                ?>
-
-                    <?php $form = ActiveForm::begin(['options' => ['id' => 'applicationForm']]); ?>
-
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'tell') ?>
-                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-                        <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                        </div>
-
-                    <?php ActiveForm::end(); ?>
-
-            <?php Modal::end(); ?>
-            <?php
-                Modal::begin([
-                    'toggleButton' => [
-                        'label'=>'',
-                        'style' => 'background-image: url(images/image_3.jpg)',
-                        'class' => 'modalclass photography-entry img col-md-4  d-flex justify-content-center align-items-center',
-                        ],
-                    ]);
-                ?>
-
-                    <?php $form = ActiveForm::begin(['options' => ['id' => 'applicationForm']]); ?>
-
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'tell') ?>
-                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-                        <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                        </div>
-
-                    <?php ActiveForm::end(); ?>
-
-            <?php Modal::end(); ?>
-            <?php
-                Modal::begin([
-                    'toggleButton' => [
-                        'label'=>'',
-                        'style' => 'background-image: url(images/image_4.jpg)',
-                        'class' => 'modalclass photography-entry img col-md-4  d-flex justify-content-center align-items-center',
-                        ],
-                    ]);
-                ?>
-
-                    <?php $form = ActiveForm::begin(['options' => ['id' => 'applicationForm']]); ?>
-
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'tell') ?>
-                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-                        <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                        </div>
-
-                    <?php ActiveForm::end(); ?>
-
-            <?php Modal::end(); ?>
-            <?php
-                Modal::begin([
-                    'toggleButton' => [
-                        'label'=>'',
-                        'style' => 'background-image: url(images/image_5.jpg)',
-                        'class' => 'modalclass photography-entry img col-md-4  d-flex justify-content-center align-items-center',
-                        ],
-                    ]);
-                ?>
-
-                    <?php $form = ActiveForm::begin(['options' => ['id' => 'applicationForm']]); ?>
-
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'tell') ?>
-                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-                        <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                        </div>
-
-                    <?php ActiveForm::end(); ?>
-
-            <?php Modal::end(); ?>
-            <?php
-                Modal::begin([
-                    'toggleButton' => [
-                        'label'=>'',
-                        'style' => 'background-image: url(images/image_6.jpg)',
-                        'class' => 'modalclass photography-entry img col-md-4  d-flex justify-content-center align-items-center',
-                        ],
-                    ]);
-                ?>
-
-                    <?php $form = ActiveForm::begin(['options' => ['id' => 'applicationForm']]); ?>
-
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'tell') ?>
-                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-                        <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                        </div>
-
-                    <?php ActiveForm::end(); ?>
-
-            <?php Modal::end(); ?>
-            <?php
-                Modal::begin([
-                    'toggleButton' => [
-                        'label'=>'',
-                        'style' => 'background-image: url(images/image_7.jpg)',
-                        'class' => 'modalclass photography-entry img col-md-4  d-flex justify-content-center align-items-center',
-                        ],
-                    ]);
-                ?>
-
-                    <?php $form = ActiveForm::begin(['options' => ['id' => 'applicationForm']]); ?>
-
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'tell') ?>
-                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-                        <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                        </div>
-
-                    <?php ActiveForm::end(); ?>
-
-            <?php Modal::end(); ?>
-            <?php
-                Modal::begin([
-                    'toggleButton' => [
-                        'label'=>'',
-                        'style' => 'background-image: url(images/image_8.jpg)',
-                        'class' => 'modalclass photography-entry img col-md-4  d-flex justify-content-center align-items-center',
-                        ],
-                    ]);
-                ?>
-
-                    <?php $form = ActiveForm::begin(['options' => ['id' => 'applicationForm']]); ?>
-
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'tell') ?>
-                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-                        <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                        </div>
-
-                    <?php ActiveForm::end(); ?>
-
-            <?php Modal::end(); ?>
-            <?php
-                Modal::begin([
-                    'toggleButton' => [
-                        'label'=>'',
-                        'style' => 'background-image: url(images/image_9.jpg)',
-                        'class' => 'modalclass photography-entry img col-md-4  d-flex justify-content-center align-items-center',
-                        ],
-                    ]);
-                ?>
-
-                    <?php $form = ActiveForm::begin(['options' => ['id' => 'applicationForm']]); ?>
-
-                        <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-                        <?= $form->field($model, 'tell') ?>
-                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-
-                        <div class="form-group">
-                            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                        </div>
-
-                    <?php ActiveForm::end(); ?>
-
-            <?php Modal::end(); ?>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_1.jpg"
+                           class="photography-entry imп image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_1.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 01</h3>
+                                <span class="tag">Model</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_2.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_2.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 02</h3>
+                                <span class="tag">Nature</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_3.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_3.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 03</h3>
+                                <span class="tag">Fashion</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_4.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_4.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 04</h3>
+                                <span class="tag">Travel</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_5.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_5.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 05</h3>
+                                <span class="tag">Travel</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_6.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_6.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 06</h3>
+                                <span class="tag">Travel</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_7.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_7.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 07</h3>
+                                <span class="tag">Fashion, Model</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_8.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_8.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 08</h3>
+                                <span class="tag">Nature</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_9.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_9.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 09</h3>
+                                <span class="tag">Technology</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_10.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_10.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 10</h3>
+                                <span class="tag">Model</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_11.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_11.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 11</h3>
+                                <span class="tag">Fashion</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 ftco-animate">
+                        <a href="images/image_12.jpg"
+                           class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                           style="background-image: url(images/image_12.jpg);">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>Work 12</h3>
+                                <span class="tag">Photography</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
