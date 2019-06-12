@@ -7,7 +7,6 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\ApplicationForm;
 use app\models\Application;
 class SiteController extends Controller
 {
@@ -56,29 +55,35 @@ class SiteController extends Controller
      *
      * @return string
      */
+    // public function actionIndex()
+    // {   
+        
+    //     $model = new Application();
+
+    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    //         return $this->redirect(['view', 'id' => $model->id]);
+    //     }
+
+    //     return $this->render('index', [
+    //         'model' => $model,
+    //     ]);
+    // }
     public function actionIndex()
     {   
-        if(Yii::$app->request->isAjax){
-            debug(Yii::$app->request->post());
-            return 'index';
+        
+        $model = new Application();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->refresh();
         }
-        $model = new ApplicationForm();
-        $model->save();
-        if ($model->load(Yii::$app->request->post())){
-            if( $model->save()){
-                Yii::$app->session->setFlash('success','Данные приняты');
-                return $this->refresh();
-            }
-            else{
-                Yii::$app->session->setFlash('error','Ошибка');
-            }
-        }
-        return $this->render('index',compact('model'));
+
+        return $this->render('index', [
+            'model' => $model,
+        ]);
     }
     public function actionM_cabinet()
     {   
-        $cats= Application::find()->all();
-        return $this->render('m_cabinet',compact('cats'));
+        return $this->render('m_cabinet');
     }
     /**
      * Login action.
