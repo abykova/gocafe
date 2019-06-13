@@ -1,7 +1,5 @@
 <?php
-
 namespace app\controllers;
-
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -9,7 +7,6 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\ApplicationForm;
 use app\models\Application;
 class SiteController extends Controller
 {
@@ -38,7 +35,6 @@ class SiteController extends Controller
             ],
         ];
     }
-
     /**
      * {@inheritdoc}
      */
@@ -54,36 +50,40 @@ class SiteController extends Controller
             ],
         ];
     }
-
     /**
      * Displays homepage.
      *
      * @return string
      */
+    // public function actionIndex()
+    // {   
+        
+    //     $model = new Application();
+
+    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    //         return $this->redirect(['view', 'id' => $model->id]);
+    //     }
+
+    //     return $this->render('index', [
+    //         'model' => $model,
+    //     ]);
+    // }
     public function actionIndex()
     {   
-        if(Yii::$app->request->isAjax){
-            debug(Yii::$app->request->post());
-            return 'index';
-        }
-        $model = new ApplicationForm();
-        $model->save();
-        if ($model->load(Yii::$app->request->post())){
-            if( $model->save()){
-                Yii::$app->session->setFlash('success','Данные приняты');
-                return $this->refresh();
-            }
-            else{
-                Yii::$app->session->setFlash('error','Ошибка');
-            }
-        }
-        return $this->render('index',compact('model'));
+        
+        $model = new Application();
 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->refresh();
+        }
+
+        return $this->render('index', [
+            'model' => $model,
+        ]);
     }
     public function actionM_cabinet()
     {   
-        $cats= Application::find()->all();
-        return $this->render('m_cabinet',compact('cats'));
+        return $this->render('m_cabinet');
     }
     /**
      * Login action.
@@ -95,18 +95,15 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
-
         $model->password = '';
         return $this->render('login', [
             'model' => $model,
         ]);
     }
-
     /**
      * Logout action.
      *
@@ -115,10 +112,8 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
-
     /**
      * Displays contact page.
      *
@@ -129,14 +124,12 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
             return $this->refresh();
         }
         return $this->render('contact', [
             'model' => $model,
         ]);
     }
-
     /**
      * Displays about page.
      *

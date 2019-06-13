@@ -1,14 +1,49 @@
-<?php 
+<?php
+
 namespace app\models;
-use yii\db\ActiveRecord;
+
+use Yii;
+
 /**
- * 
+ * This is the model class for table "application".
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $tell
+ * @property string $text
  */
-class Application extends ActiveRecord
+class Application extends \yii\db\ActiveRecord
 {
-	
-	public static function tableName(){
-		return 'application';
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'application';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['name', 'tell', 'text'], 'required'],
+            [['text'], 'string'],
+            [['name', 'tell'], 'string', 'max' => 50],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'name' => 'Name',
+            'tell' => 'Tell',
+            'text' => 'Text',
+        ];
+    }
 }
-?>

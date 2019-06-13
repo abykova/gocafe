@@ -67,7 +67,7 @@ use yii\helpers\Html;
 	            	<h3 class="sidebar-heading">Возможности</h3>
 	              <ul class="categories">
 	                <li><a href="#">Создать карту заведения </a></li>
-	                <li><?= Html::a('Бронь', ['application/index']) ?></li>
+	                <li><a href="#">Бронь </a></li>
 	                <li><a href="#">Редактировать контакты </a></li>
 	                <li><a href="#">Редактировать время работы </a></li>
 	                <li><a href="#">Редактировать меню </a></li>
