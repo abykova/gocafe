@@ -57,6 +57,7 @@ INSERT INTO `application` (`id`, `name`, `tell`, `text`) VALUES
 (13, '', '', ''),
 (14, 'dsfsdf', '794646785', 'dfgdfgfdgdf'),
 (15, 'fgdfgdfg', 'dfgdfg', 'fgfdg');
+(16, 'fgdfgdfg', 'dfgdfg', 'fgfdg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
