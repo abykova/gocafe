@@ -8,6 +8,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Application;
+use app\models\Cafes;
+use yii\data\Pagination;
 class SiteController extends Controller
 {
     /**
@@ -38,6 +40,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
+    
     public function actions()
     {
         return [
@@ -50,36 +53,27 @@ class SiteController extends Controller
             ],
         ];
     }
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    // public function actionIndex()
-    // {   
-        
-    //     $model = new Application();
-
-    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
-    //         return $this->redirect(['view', 'id' => $model->id]);
-    //     }
-
-    //     return $this->render('index', [
-    //         'model' => $model,
-    //     ]);
-    // }
+    
     public function actionIndex()
     {   
         
         $model = new Application();
+        $cafes = Cafes::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->refresh();
         }
 
-        return $this->render('index', [
-            'model' => $model,
-        ]);
+        return $this->render('index', compact('model','cafes'));
+    }
+    public function actionSeach(){
+        $name_cafe=trim(Yii::$app->request->get('name_cafe'));
+        if(!$name_cafe)
+            return $this->render('search');
+        $query=Cafe::find()->where(['like','name',$name_cafe]);
+        $pages= new Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $cafe = $query->offset($pages->offset)->limit($pages->limit)->all();
+        return $this->render('search',compact('cafe','pages','name_cafe'));
     }
     public function actionM_cabinet()
     {   

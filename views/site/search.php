@@ -14,7 +14,7 @@ use yii\helpers\Html;
                     <li class="colorlib-active"><?= Html::a('Home', ['site/index']) ?></li>
                     <li><?= Html::a('About', ['site/about']) ?></li>
                     <li><?= Html::a('Contact', ['site/contact']) ?></li>
-                    <form action="<?= \yii\helpers\Url::to(['site/about']) ?>" method="get">
+                    <form action="<?= \yii\helpers\Url::to('index/search') ?>" method="get">
                         <li>
                             <input style="width: 80%;" placeholder="заведение"  name="name_cafe" type='text'>
                             <button type="submit"  class="btn  ">Найти</button>
@@ -49,6 +49,7 @@ use yii\helpers\Html;
 			
 
             <div class="photograhy">
+                <h1>You're looking for <?= Html::encode($name_cafe)?></h1>
                 <div class="row no-gutters">
                     <?php foreach ($cafes as $cafe): ?>
                         <div class="col-md-4 ftco-animate">
