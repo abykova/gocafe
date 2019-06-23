@@ -15,7 +15,7 @@ use yii\helpers\Url;
                     <li class="colorlib-active"><?= Html::a('Home', ['site/index']) ?></li>
                     <li><?= Html::a('About', ['site/about']) ?></li>
                     <li><?= Html::a('Contact', ['site/contact']) ?></li>
-                    <form action="<?= Url::to(['kitchens/list']) ?>" method="get">
+                    <form action="" method="get">
                         <li>
                             <input style="width: 80%;" placeholder="заведение"  name="q" type='text'>
                             <button type="submit"  class="btn  ">Найти</button>
@@ -49,56 +49,58 @@ use yii\helpers\Url;
         <section class="ftco-section-2">
 
 
-			
+			<h1>Популярные заведения </h1>
 
             <div class="photograhy">
                 <div class="row no-gutters">
-                    <?php foreach ($cafes as $cafe): ?>
-                        <div class="col-md-4 ftco-animate">
-                            <div 
-                               class="photography-entry img  d-flex justify-content-center align-items-center"
-                               style="background-image: url(images/<?= $cafe->img ?>);">
-                                <div class="overlay"></div>
-                                <div class="text text-center">
-                                    <h3><a href="<?= Url::to(['site/view','id'=>$cafe->id_cafe]) ?>"><?= $cafe->name ?></a></h3>
-                                    <span class="tag"><?= $cafe->kitchen?></span><br>
-                                    <span class="tag">
-                                        <?php
-                                            Modal::begin([
-                                                'toggleButton' => [
-                                                    'label' => 'Оставить заявку',
-                                                    'class' => 'btn btn-success'
-                                                    ],
-                                                ]);
-                                            ?>
+                    <?php if(!empty($cafes)): ?>
+                        <?php foreach ($cafes as $cafe): ?>
+                            <div class="col-md-4 ftco-animate">
+                                <div 
+                                   class="photography-entry img  d-flex justify-content-center align-items-center"
+                                   style="background-image: url(images/<?= $cafe->img ?>);">
+                                    <div class="overlay"></div>
+                                    <div class="text text-center">
+                                        <h3><a href="<?= Url::to(['site/view','id'=>$cafe->id_cafe]) ?>"><?= $cafe->name ?></a></h3>
+                                        <span class="tag"><?= $cafe->kitchen?></span><br>
+                                        <span class="tag">
+                                            <?php
+                                                Modal::begin([
+                                                    'toggleButton' => [
+                                                        'label' => 'Оставить заявку',
+                                                        'class' => 'btn btn-success'
+                                                        ],
+                                                    ]);
+                                                ?>
 
-                                                <div class="application-form">
+                                                    <div class="application-form">
 
-                                                    <?php $form = ActiveForm::begin(); ?>
+                                                        <?php $form = ActiveForm::begin(); ?>
 
-                                                        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                                                            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-                                                        <?= $form->field($model, 'tell')->textInput(['maxlength' => true]) ?>
+                                                            <?= $form->field($model, 'tell')->textInput(['maxlength' => true]) ?>
 
-                                                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+                                                            <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
-                                                        <div class="form-group">
-                                                            <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
-                                                        </div>
+                                                            <div class="form-group">
+                                                                <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
+                                                            </div>
 
-                                                    <?php ActiveForm::end(); ?>
+                                                        <?php ActiveForm::end(); ?>
 
-                                                </div>
+                                                    </div>
 
-                                            <?php Modal::end(); ?>
-                                    </span><br>
-                                    
+                                                <?php Modal::end(); ?>
+                                        </span><br>
+                                        
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
-                    
-
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>К сожеланию, популярных пока нет</p>
+                    <?php endif; ?>
                     
                     
                 </div>

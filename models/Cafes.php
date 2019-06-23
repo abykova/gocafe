@@ -11,7 +11,7 @@ class Cafes extends \yii\db\ActiveRecord
 	}
 	public function rules(){
 		return [
-            [['id_cafe', 'name', 'kitchen','content', 'evarage_check', 'working_hours','address', 'tell', 'img', 'hit', 'new'], 'required'],
+            [['name', 'kitchen','content', 'evarage_check', 'working_hours','address', 'tell', 'img', 'hit', 'new'], 'required'],
             
         ];
 	}

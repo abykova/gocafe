@@ -15,7 +15,7 @@ use yii\helpers\Url;
                     <li class="colorlib-active"><?= Html::a('Home', ['site/index']) ?></li>
                     <li><?= Html::a('About', ['site/about']) ?></li>
                     <li><?= Html::a('Contact', ['site/contact']) ?></li>
-                    <form action="<?= Url::to(['site/about']) ?>" method="get">
+                    <form action="" method="get">
                         <li>
                             <input style="width: 80%;" placeholder="заведение"  name="q" type='text'>
                             <button type="submit"  class="btn  ">Найти</button>
@@ -23,7 +23,7 @@ use yii\helpers\Url;
                     </form>
                 </ul>
                 <ul class="tagcloud">
-                    <a href="#" class="tag-cloud-link">кухня</a>
+                    <a href="<?= Url::to(['kitchens/list']) ?>" class="tag-cloud-link">кухня</a>
                     <a href="<?= Url::to(['parametr/hit']) ?>" class="tag-cloud-link">популярные</a>
                     <a href="<?= Url::to(['parametr/new']) ?>" class="tag-cloud-link">новинки</a>
                 </ul>
@@ -46,84 +46,24 @@ use yii\helpers\Url;
             </div>
     </aside>
     <div id="colorlib-main">
-        <section class="ftco-section-2 view">
+        <section class="ftco-section-2">
 
-				<h1 class="view__title "><?= $cafe->name ?></h1>
-			
 
-            
-                <div class="row">
-                    <div class="col-md-8">
-                    	<img style="height: 300px;" src="images/<?= $cafe->img?>" alt="$cafe->name">
-                    </div>
-                    <div class="col-md-4">
-                    	<h2 >О кафе: </h2>
-                    	<table class="table ">
-                    		<tr>
-                    			<th class="coll">
-                    				Название:
-                    			</th>
-                    			<th>
-                    				<?= $cafe->name ?>
-                    			</th>
-                    		</tr>
-                    		<tr>
-                    			<th class="coll">
-                    				Кухня:
-                    			</th>
-                    			<th>
-                    				<?= $cafe->kitchen ?>
-                    			</th>
-                    		</tr>
-                    		<tr>
-                    			<th class="coll">
-                    				Средний чек:
-                    			</th>
-                    			<th>
-                    				<?= $cafe->evarage_check ?> тг
-                    			</th>
-                    		</tr>
-                    		<tr>
-                    			<th class="coll">
-                    				Время работы:
-                    			</th>
-                    			<th>
-                    				<?= $cafe->working_hours ?>
-                    			</th>
-                    		</tr>
-                    		<tr>
-                    			<th class="coll">
-                    				Адрес:
-                    			</th>
-                    			<th>
-                    				<?= $cafe->address ?>
-                    			</th>
-                    		</tr>
-                    		<tr>
-                    			<th class="coll">
-                    				Телефон: 
-                    			</th>
-                    			<th>
-                    				<?= $cafe->tell ?>
-                    			</th>
-                    		</tr>
-                            <tr>
-                                <th class="coll">
-                                    Статус:  
-                                </th>
-                                <th>
-                                    <?php if($cafe->hit>0):?>
-                                        Популярное
-                                    <?php endif ?>
-                                    <br>
-                                    <?php if($cafe->new>0):?>
-                                        Новинка
-                                    <?php endif ?>
-                                </th>
-                            </tr>
-                    		
-                    	</table>
-                    	<?php
+			<h2> Кухня: <?= $kitchen ?></h2>
+
+            <div class="photograhy">
+                <div class="row no-gutters">
+                    <?php foreach ($cafes as $cafe): ?>
+                        <div class="col-md-4 ftco-animate">
+                            <div 
+                               class="photography-entry img  d-flex justify-content-center align-items-center"
+                               style="background-image: url(images/<?= $cafe->img ?>);">
+                                <div class="overlay"></div>
+                                <div class="text text-center">
+                                    <h3><a href="<?= Url::to(['site/view','id'=>$cafe->id_cafe]) ?>"><?= $cafe->name ?></a></h3>
+                                    <span class="tag"><?= $cafe->kitchen?></span><br>
+                                    <span class="tag">
+                                        <?php
                                             Modal::begin([
                                                 'toggleButton' => [
                                                     'label' => 'Оставить заявку',
@@ -151,19 +91,23 @@ use yii\helpers\Url;
                                                 </div>
 
                                             <?php Modal::end(); ?>
-                    	
-                    </div>
-				</div>
-				<div>
-					<h3>Описание</h3>
-					<p>
-						<?= $cafe->content ?>
-					</p>
-				</div>
+                                    </span><br>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    
+
                     
                     
-                
-            
+                </div>
+                <?php
+        echo \yii\widgets\LinkPager::widget([
+            'pagination' => $pages,
+        ]);
+        ?>
+            </div>
         </section>
 
     </div>
