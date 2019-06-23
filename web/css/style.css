@@ -8590,3 +8590,7 @@ textarea.form-control {
 .modalclass{
   height: 280px !important;
 }
+.view__title{
+  margin-top: 30px;
+  color: #F67E7D;
+}

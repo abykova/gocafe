@@ -58,22 +58,36 @@ class SiteController extends Controller
     {   
         
         $model = new Application();
-        $cafes = Cafes::find()->all();
+        $query = Cafes::find();
+        $pages= new Pagination(['totalCount' => $query->count(), 'pageSize' => 6, 'forcePageParam' => false, 'pageSizeParam' => false]);
+        $cafes = $query->offset($pages->offset)->limit($pages->limit)->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->refresh();
         }
 
-        return $this->render('index', compact('model','cafes'));
+        return $this->render('index', compact('model','cafes','pages'));
     }
     public function actionSeach(){
-        $name_cafe=trim(Yii::$app->request->get('name_cafe'));
-        if(!$name_cafe)
+        $q=trim(Yii::$app->request->get('q'));
+        if(!$q)
             return $this->render('search');
-        $query=Cafe::find()->where(['like','name',$name_cafe]);
+        $query=Cafe::find()->where(['like','name',$q]);
         $pages= new Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'forcePageParam' => false, 'pageSizeParam' => false]);
         $cafe = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('search',compact('cafe','pages','name_cafe'));
+        return $this->render('search',compact('cafe','pages','q'));
+    }
+    public function actionView(){
+        $id=Yii::$app->request->get('id');
+        $cafe=Cafes::findOne($id);
+        $model = new Application();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->refresh();
+        }
+        if(empty($cafe)){
+            throw new \yii\web\HttpException(404,"Кафе не существует");
+        }
+        return $this->render('view',compact('cafe','model'));
     }
     public function actionM_cabinet()
     {   

@@ -15,7 +15,7 @@ use yii\helpers\Url;
                     <li class="colorlib-active"><?= Html::a('Home', ['site/index']) ?></li>
                     <li><?= Html::a('About', ['site/about']) ?></li>
                     <li><?= Html::a('Contact', ['site/contact']) ?></li>
-                    <form action="" method="get">
+                    <form action="<?= Url::to(['site/about']) ?>" method="get">
                         <li>
                             <input style="width: 80%;" placeholder="заведение"  name="q" type='text'>
                             <button type="submit"  class="btn  ">Найти</button>
@@ -44,24 +44,70 @@ use yii\helpers\Url;
             </div>
     </aside>
     <div id="colorlib-main">
-        <section class="ftco-section-2">
+        <section class="ftco-section-2 view">
 
-
+				<h1 class="view__title "><?= $cafe->name ?></h1>
 			
 
-            <div class="photograhy">
-                <div class="row no-gutters">
-                    <?php foreach ($cafes as $cafe): ?>
-                        <div class="col-md-4 ftco-animate">
-                            <div 
-                               class="photography-entry img  d-flex justify-content-center align-items-center"
-                               style="background-image: url(images/<?= $cafe->img ?>);">
-                                <div class="overlay"></div>
-                                <div class="text text-center">
-                                    <h3><a href="<?= Url::to(['site/view','id'=>$cafe->id_cafe]) ?>"><?= $cafe->name ?></a></h3>
-                                    <span class="tag"><?= $cafe->kitchen?></span><br>
-                                    <span class="tag">
-                                        <?php
+            
+                <div class="row">
+                    <div class="col-md-8">
+                    	<img style="height: 300px;" src="images/<?= $cafe->img?>" alt="$cafe->name">
+                    </div>
+                    <div class="col-md-4">
+                    	<h2 >О кафе: </h2>
+                    	<table class="table ">
+                    		<tr>
+                    			<th class="coll">
+                    				Название:
+                    			</th>
+                    			<th>
+                    				<?= $cafe->name ?>
+                    			</th>
+                    		</tr>
+                    		<tr>
+                    			<th class="coll">
+                    				Кухня:
+                    			</th>
+                    			<th>
+                    				<?= $cafe->kitchen ?>
+                    			</th>
+                    		</tr>
+                    		<tr>
+                    			<th class="coll">
+                    				Средний чек:
+                    			</th>
+                    			<th>
+                    				<?= $cafe->evarage_check ?> тг
+                    			</th>
+                    		</tr>
+                    		<tr>
+                    			<th class="coll">
+                    				Время работы:
+                    			</th>
+                    			<th>
+                    				<?= $cafe->working_hours ?>
+                    			</th>
+                    		</tr>
+                    		<tr>
+                    			<th class="coll">
+                    				Адрес:
+                    			</th>
+                    			<th>
+                    				<?= $cafe->address ?>
+                    			</th>
+                    		</tr>
+                    		<tr>
+                    			<th class="coll">
+                    				Телефон: 
+                    			</th>
+                    			<th>
+                    				<?= $cafe->tell ?>
+                    			</th>
+                    		</tr>
+                    		
+                    	</table>
+                    	<?php
                                             Modal::begin([
                                                 'toggleButton' => [
                                                     'label' => 'Оставить заявку',
@@ -89,23 +135,19 @@ use yii\helpers\Url;
                                                 </div>
 
                                             <?php Modal::end(); ?>
-                                    </span><br>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                    	
+                    </div>
+				</div>
+				<div>
+					<h3>Описание</h3>
+					<p>
+						<?= $cafe->content ?>
+					</p>
+				</div>
                     
-
                     
-                    
-                </div>
-                <?php
-        echo \yii\widgets\LinkPager::widget([
-            'pagination' => $pages,
-        ]);
-        ?>
-            </div>
+                
+            
         </section>
 
     </div>
