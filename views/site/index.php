@@ -3,6 +3,8 @@ use yii\bootstrap\Modal;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use app\models\SearchForm;
+$model_1= new SearchForm();
 ?>
 
 <body>
@@ -15,12 +17,18 @@ use yii\helpers\Url;
                     <li class="colorlib-active"><?= Html::a('Home', ['site/index']) ?></li>
                     <li><?= Html::a('About', ['site/about']) ?></li>
                     <li><?= Html::a('Contact', ['site/contact']) ?></li>
-                    <form action="<?= Url::to(['kitchens/list']) ?>" method="get">
+                    <?php $form=ActiveForm::begin(); ?>
                         <li>
-                            <input style="width: 80%;" placeholder="заведение"  name="q" type='text'>
-                            <button type="submit"  class="btn  ">Найти</button>
+                            <div class="row">
+                                <?= $form->field($model_1,'q')->label('')->textInput([
+                                    'class'=>'input input_search',
+                                    'placeholder'=>'заведение'
+                                ]) ?>
+                                <!-- <input style="width: 80%;" placeholder="заведение"  name="q" type='text'> -->
+                                <button type="submit"  class=" btn-search ">Найти</button>
+                            </div>
                         </li>
-                    </form>
+                    <?php ActiveForm::end(); ?>
                 </ul>
                 <ul class="tagcloud">
                     <a href="<?= Url::to(['kitchens/list']) ?>" class="tag-cloud-link">кухня</a>
@@ -28,7 +36,7 @@ use yii\helpers\Url;
                     <a href="<?= Url::to(['parametr/new']) ?>" class="tag-cloud-link">новинки</a>
                 </ul>
             </nav>
-
+                
             <div class="colorlib-footer">
                 <h3>Follow Us Here!</h3>
                 <div class="d-flex justify-content-center">

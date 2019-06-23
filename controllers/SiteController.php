@@ -6,9 +6,11 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\SearchForm;
 use app\models\ContactForm;
 use app\models\Application;
 use app\models\Cafes;
+use yii\helpers\Html;
 use yii\data\Pagination;
 class SiteController extends Controller
 {
@@ -36,6 +38,16 @@ class SiteController extends Controller
                 ],
             ],
         ];
+    }
+    public function beforeAction($action)
+    {
+        $model_1=new SearchForm();
+        if($model_1->load(Yii::$app->request->post()) && $model_1->validate())
+        {
+            $q=Html::encode($model_1->q);
+            return $this->redirect(Yii::$app->urlManager->createUrl(['site/search','q'=>$q]));
+        }
+        return true;
     }
     /**
      * {@inheritdoc}
@@ -68,14 +80,19 @@ class SiteController extends Controller
 
         return $this->render('index', compact('model','cafes','pages'));
     }
-    public function actionSeach(){
+    public function actionSearch(){
+        $model_1= new SearchForm();
+        $model = new Application();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->refresh();
+        }
         $q=trim(Yii::$app->request->get('q'));
         if(!$q)
             return $this->render('search');
-        $query=Cafe::find()->where(['like','name',$q]);
+        $query=Cafes::find()->where(['like','name',$q]);
         $pages= new Pagination(['totalCount' => $query->count(), 'pageSize' => 3, 'forcePageParam' => false, 'pageSizeParam' => false]);
-        $cafe = $query->offset($pages->offset)->limit($pages->limit)->all();
-        return $this->render('search',compact('cafe','pages','q'));
+        $cafes = $query->offset($pages->offset)->limit($pages->limit)->all();
+        return $this->render('search',compact('cafes','pages','q'));
     }
     public function actionView(){
         $id=Yii::$app->request->get('id');
@@ -147,4 +164,5 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    
 }
