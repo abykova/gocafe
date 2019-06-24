@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\SearchForm;
 $model_1= new SearchForm();
+
 ?>
 
 <body>
@@ -36,7 +37,7 @@ $model_1= new SearchForm();
                     <a href="<?= Url::to(['parametr/new']) ?>" class="tag-cloud-link">новинки</a>
                 </ul>
             </nav>
-                
+
             <div class="colorlib-footer">
                 <h3>Follow Us Here!</h3>
                 <div class="d-flex justify-content-center">
@@ -54,24 +55,84 @@ $model_1= new SearchForm();
             </div>
     </aside>
     <div id="colorlib-main">
-        <section class="ftco-section-2">
+        <section class="ftco-section-2 view">
 
-
+				<h1 class="view__title "><?= $cafe->name ?></h1>
 			
 
-            <div class="photograhy">
-                <div class="row no-gutters">
-                    <?php foreach ($cafes as $cafe): ?>
-                        <div class="col-md-4 ftco-animate">
-                            <div 
-                               class="photography-entry img  d-flex justify-content-center align-items-center"
-                               style="background-image: url(images/<?= $cafe->img ?>);">
-                                <div class="overlay"></div>
-                                <div class="text text-center">
-                                    <h3><a href="<?= Url::to(['site/view','id'=>$cafe->id_cafe]) ?>"><?= $cafe->name ?></a></h3>
-                                    <span class="tag"><?= $cafe->kitchen?></span><br>
-                                    <span class="tag">
-                                        <?php
+            
+                <div class="row">
+                    <div class="col-md-8">
+                    	<img style="height: 300px;" src="images/<?= $cafe->img?>" alt="$cafe->name">
+                    </div>
+                    <div class="col-md-4">
+                    	<h2 >О кафе: </h2>
+                    	<table class="table ">
+                    		<tr>
+                    			<th class="coll">
+                    				Название:
+                    			</th>
+                    			<th>
+                    				<?= $cafe->name ?>
+                    			</th>
+                    		</tr>
+                    		<tr>
+                    			<th class="coll">
+                    				Кухня:
+                    			</th>
+                    			<th>
+                    				<?= $cafe->kitchen ?>
+                    			</th>
+                    		</tr>
+                    		<tr>
+                    			<th class="coll">
+                    				Средний чек:
+                    			</th>
+                    			<th>
+                    				<?= $cafe->evarage_check ?> тг
+                    			</th>
+                    		</tr>
+                    		<tr>
+                    			<th class="coll">
+                    				Время работы:
+                    			</th>
+                    			<th>
+                    				<?= $cafe->working_hours ?>
+                    			</th>
+                    		</tr>
+                    		<tr>
+                    			<th class="coll">
+                    				Адрес:
+                    			</th>
+                    			<th>
+                    				<?= $cafe->address ?>
+                    			</th>
+                    		</tr>
+                    		<tr>
+                    			<th class="coll">
+                    				Телефон: 
+                    			</th>
+                    			<th>
+                    				<?= $cafe->tell ?>
+                    			</th>
+                    		</tr>
+                            <tr>
+                                <th class="coll">
+                                    Статус:  
+                                </th>
+                                <th>
+                                    <?php if($cafe->hit>0):?>
+                                        Популярное
+                                    <?php endif ?>
+                                    <br>
+                                    <?php if($cafe->new>0):?>
+                                        Новинка
+                                    <?php endif ?>
+                                </th>
+                            </tr>
+                    		
+                    	</table>
+                    	<?php
                                             Modal::begin([
                                                 'toggleButton' => [
                                                     'label' => 'Оставить заявку',
@@ -99,23 +160,19 @@ $model_1= new SearchForm();
                                                 </div>
 
                                             <?php Modal::end(); ?>
-                                    </span><br>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                    	
+                    </div>
+				</div>
+				<div>
+					<h3>Описание</h3>
+					<p>
+						<?= $cafe->content ?>
+					</p>
+				</div>
                     
-
                     
-                    
-                </div>
-                <?php
-        echo \yii\widgets\LinkPager::widget([
-            'pagination' => $pages,
-        ]);
-        ?>
-            </div>
+                
+            
         </section>
 
     </div>

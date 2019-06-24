@@ -7,6 +7,10 @@
 use yii\helpers\Html;
 use app\assets\AppAsset;
 use yii\widgets\Breadcrumbs;
+use yii\widgets\ActiveForm;
+use app\models\SearchForm;
+$model= new SearchForm;
+
 
 AppAsset::register($this);
 ?>

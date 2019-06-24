@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\SearchForm;
 $model_1= new SearchForm();
+
 ?>
 
 <body>
@@ -36,7 +37,7 @@ $model_1= new SearchForm();
                     <a href="<?= Url::to(['parametr/new']) ?>" class="tag-cloud-link">новинки</a>
                 </ul>
             </nav>
-                
+
             <div class="colorlib-footer">
                 <h3>Follow Us Here!</h3>
                 <div class="d-flex justify-content-center">
@@ -57,56 +58,58 @@ $model_1= new SearchForm();
         <section class="ftco-section-2">
 
 
-			
+			<h1>Популярные заведения </h1>
 
             <div class="photograhy">
                 <div class="row no-gutters">
-                    <?php foreach ($cafes as $cafe): ?>
-                        <div class="col-md-4 ftco-animate">
-                            <div 
-                               class="photography-entry img  d-flex justify-content-center align-items-center"
-                               style="background-image: url(images/<?= $cafe->img ?>);">
-                                <div class="overlay"></div>
-                                <div class="text text-center">
-                                    <h3><a href="<?= Url::to(['site/view','id'=>$cafe->id_cafe]) ?>"><?= $cafe->name ?></a></h3>
-                                    <span class="tag"><?= $cafe->kitchen?></span><br>
-                                    <span class="tag">
-                                        <?php
-                                            Modal::begin([
-                                                'toggleButton' => [
-                                                    'label' => 'Оставить заявку',
-                                                    'class' => 'btn btn-success'
-                                                    ],
-                                                ]);
-                                            ?>
+                    <?php if(!empty($cafes)): ?>
+                        <?php foreach ($cafes as $cafe): ?>
+                            <div class="col-md-4 ftco-animate">
+                                <div 
+                                   class="photography-entry img  d-flex justify-content-center align-items-center"
+                                   style="background-image: url(images/<?= $cafe->img ?>);">
+                                    <div class="overlay"></div>
+                                    <div class="text text-center">
+                                        <h3><a href="<?= Url::to(['site/view','id'=>$cafe->id_cafe]) ?>"><?= $cafe->name ?></a></h3>
+                                        <span class="tag"><?= $cafe->kitchen?></span><br>
+                                        <span class="tag">
+                                            <?php
+                                                Modal::begin([
+                                                    'toggleButton' => [
+                                                        'label' => 'Оставить заявку',
+                                                        'class' => 'btn btn-success'
+                                                        ],
+                                                    ]);
+                                                ?>
 
-                                                <div class="application-form">
+                                                    <div class="application-form">
 
-                                                    <?php $form = ActiveForm::begin(); ?>
+                                                        <?php $form = ActiveForm::begin(); ?>
 
-                                                        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                                                            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-                                                        <?= $form->field($model, 'tell')->textInput(['maxlength' => true]) ?>
+                                                            <?= $form->field($model, 'tell')->textInput(['maxlength' => true]) ?>
 
-                                                        <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+                                                            <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
-                                                        <div class="form-group">
-                                                            <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
-                                                        </div>
+                                                            <div class="form-group">
+                                                                <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
+                                                            </div>
 
-                                                    <?php ActiveForm::end(); ?>
+                                                        <?php ActiveForm::end(); ?>
 
-                                                </div>
+                                                    </div>
 
-                                            <?php Modal::end(); ?>
-                                    </span><br>
-                                    
+                                                <?php Modal::end(); ?>
+                                        </span><br>
+                                        
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
-                    
-
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>К сожеланию, популярных пока нет</p>
+                    <?php endif; ?>
                     
                     
                 </div>

@@ -41,9 +41,9 @@ class Application extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'tell' => 'Tell',
-            'text' => 'Text',
+            'name' => 'Имя',
+            'tell' => 'Телефон',
+            'text' => 'Текст',
         ];
     }
 }

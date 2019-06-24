@@ -3,8 +3,6 @@ use yii\bootstrap\Modal;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\models\SearchForm;
-$model_1= new SearchForm();
 ?>
 
 <body>
@@ -17,18 +15,12 @@ $model_1= new SearchForm();
                     <li class="colorlib-active"><?= Html::a('Home', ['site/index']) ?></li>
                     <li><?= Html::a('About', ['site/about']) ?></li>
                     <li><?= Html::a('Contact', ['site/contact']) ?></li>
-                    <?php $form=ActiveForm::begin(); ?>
+                    <form action="" method="get">
                         <li>
-                            <div class="row">
-                                <?= $form->field($model_1,'q')->label('')->textInput([
-                                    'class'=>'input input_search',
-                                    'placeholder'=>'заведение'
-                                ]) ?>
-                                <!-- <input style="width: 80%;" placeholder="заведение"  name="q" type='text'> -->
-                                <button type="submit"  class=" btn-search ">Найти</button>
-                            </div>
+                            <input style="width: 80%;" placeholder="заведение"  name="q" type='text'>
+                            <button type="submit"  class="btn  ">Найти</button>
                         </li>
-                    <?php ActiveForm::end(); ?>
+                    </form>
                 </ul>
                 <ul class="tagcloud">
                     <a href="<?= Url::to(['kitchens/list']) ?>" class="tag-cloud-link">кухня</a>
@@ -36,7 +28,7 @@ $model_1= new SearchForm();
                     <a href="<?= Url::to(['parametr/new']) ?>" class="tag-cloud-link">новинки</a>
                 </ul>
             </nav>
-                
+
             <div class="colorlib-footer">
                 <h3>Follow Us Here!</h3>
                 <div class="d-flex justify-content-center">
@@ -57,7 +49,7 @@ $model_1= new SearchForm();
         <section class="ftco-section-2">
 
 
-			
+			<h2> Кухня: <?= $kitchen ?></h2>
 
             <div class="photograhy">
                 <div class="row no-gutters">
